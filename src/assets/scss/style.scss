@@ -1,0 +1,76 @@
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "vendor/reset";
+
+html {
+  box-sizing: border-box;
+  font-size: calc(100vw / 1920 * 10);
+
+  @include breakpoint($ssh-bp) {
+    font-size: calc(100vw / 1600 * 10);
+  }
+
+  @include breakpoint($cos-bp) {
+    font-size: calc(100vw / 1330 * 10);
+  }
+
+  @include breakpoint($xl-bp) {
+    font-size: calc(100vw / 1024 * 10);
+  }
+
+  @include breakpoint($jb-bp) {
+    font-size: calc(100vw / 850 * 10);
+  }
+
+  @include breakpoint($lb-bp) {
+    font-size: calc(100vw / 650 * 10);
+  }
+
+
+  @include breakpoint($sm-bp) {
+    font-size: calc(100vw / 375 * 10);
+  }
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font-family: Montserrat;
+    font-style: normal;
+}
+
+
+img {
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.page-padding {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.page-margin-top {
+  margin-top: 9rem;
+}
+
+.page-margin-buttom {
+  margin-bottom: 20rem;
+}
+
+svg {
+  transition: all 0.1s linear;
+}
+
+@import './blocks/header.scss';
+@import './blocks/swiper.scss';
+@import './blocks/footer.scss';
+@import './blocks/main.scss';
+
