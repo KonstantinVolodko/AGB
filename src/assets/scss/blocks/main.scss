@@ -1,5 +1,10 @@
 .main-title {
     display: flex;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 3rem;
+    }
 }
 
 .main-title__content {
@@ -17,6 +22,16 @@
         text-transform: uppercase;
         color: #2D2B27;
 
+        @include breakpoint($lb-bp) {
+            font-size: 3.6rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            font-size: 2.8rem;
+            line-height: 140%;
+            word-wrap: break-word;
+        }
+
         span {
             color: #FA0;
         }
@@ -28,21 +43,43 @@
         font-weight: 500;
         line-height: 160%;
         margin-top: 2rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 1rem;
+            font-size: 1.4rem;
+        }
     }
 
     button {
         margin-top: 5rem;
+
+        @include breakpoint($xl-bp) {
+            margin-top: 3rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            margin-top: 3rem;
+            width: 100%;
+        }
     }
 }
 
 .main-title__text-down-container {
     padding: 3rem;
 
+    @include breakpoint($xl-bp) {
+        padding: 2rem;
+    }
+
     p:first-child {
         color: #2D2B27;
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
     }
 
     p:nth-child(2) {
@@ -51,6 +88,11 @@
         font-weight: 500;
         line-height: 160%;
         margin-top: 2rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 1rem;
+            font-size: 1.4rem;
+        }
     }
 
     a {
@@ -78,6 +120,15 @@
         -webkit-text-fill-color: transparent;
         transition: all 0.3s ease-in-out;
 
+        @include breakpoint($xl-bp) {
+            margin-top: 2rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
         &:hover {
             background-position: 0;
             border-color: #2D2B27;
@@ -91,12 +142,23 @@
             width: 2.2rem;
             height: 2rem;
             fill: #FFAA00;
+
+            @include breakpoint($sm-bp) {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
         }
     }
 }
 
 .main-title__img {
     width: 78.7222%;
+
+    @include breakpoint($xl-bp) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 100%;
+    }
 
     img {
         width: 100%;
@@ -111,13 +173,20 @@
     flex-direction: column;
     gap: 5rem;
     margin-top: 20rem;
+
+    @include breakpoint($xl-bp) {
+        margin-top: 10rem;
+    }
+
+    @include breakpoint($lb-bp) {
+        gap: 3rem;
+    }
 }
 
 .main-about-company__top-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 12rem;
 
     h2 {
         color: #2D2B27;
@@ -125,6 +194,10 @@
         font-weight: 700;
         line-height: 113.9%;
         text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2rem;
+        }
     }
 
     div {
@@ -142,12 +215,37 @@
     flex-direction: column;
     gap: 5rem;
 
+    @include breakpoint($xl-bp) {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    @include breakpoint($lb-bp) {
+        gap: 2rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        gap: 1rem;
+    }
+
     p:first-child {
         color: #2D2B27;
         font-size: 15rem;
         font-weight: 700;
         line-height: 113.9%;
         text-transform: uppercase;
+
+        @include breakpoint($lb-bp) {
+            font-size: 6rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            font-size: 5rem;
+            line-height: 140%;
+        }
     }
 
     p:nth-child(2) {
@@ -156,20 +254,32 @@
         font-weight: 500;
         line-height: 160%;
         width: 75%;
+
+        @include breakpoint($sm-bp) {
+            width: 100%;
+            font-size: 1.4rem;
+        }
     }
 }
 
 .main-about-company__bottom-container {
-    padding-right: 12rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include breakpoint($sm-bp) {
+        padding-left: 2rem;
+    }
 
     .main-about-company__line {
         background: #FA0;
         height: 0.1rem;
         width: 0%;
         transform-origin: left;
+
+        @include breakpoint($xl-bp) {
+            display: none;
+        }
     }
 
     .main-about-company__letter-container {
@@ -178,8 +288,33 @@
         width: 56.1%;
         justify-content: end;
 
+        @include breakpoint($xl-bp) {
+            width: 100%;
+            // flex-direction: column;
+            // gap: 2rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        @include breakpoint($lb-bp) {
+            gap: 3rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            flex-direction: column;
+            gap: 2rem;
+
+            width: 100%;
+            padding-left: 0rem;
+            padding-right: 0rem;
+        }
+
         .main-about-company__letter {
             width: 38%;
+
+            @include breakpoint($sm-bp) {
+                width: 100%;
+            }
         }
 
         p:first-child {
@@ -190,6 +325,14 @@
             text-transform: uppercase;
             opacity: 0;
             transition: all 0.2s linear;
+
+            @include breakpoint($lb-bp) {
+                font-size: 7rem;
+            }
+
+            @include breakpoint($sm-bp) {
+                font-size: 7rem;
+            }
         }
 
         p:first-child.opacity {
@@ -202,6 +345,10 @@
             font-size: 1.6rem;
             font-weight: 500;
             line-height: 160%;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.4rem;
+            }
         }
 
 
@@ -213,35 +360,74 @@
     margin-top: 9.5rem;
     display: flex;
     position: relative;
+    overflow: hidden;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+    }
 
     ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 3rem;
+        width: 54.465%;
+
+        @include breakpoint($xl-bp) {
+            width: 100%;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
         li {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            border-radius: 0.5rem;
-            background: #FFFBF2;
-            padding: 10.7rem 3rem 0rem 3rem;
-            height: 37rem;
-            width: 42%;
+            padding: 1.5rem;
+            width: 50%;
+            background: #FFF;
 
-            h2 {
-                color: #2D2B27;
-                font-size: 2.4rem;
-                font-weight: 700;
-                line-height: 130%;
+            @include breakpoint($xl-bp) {
+                width: 100%;
+                padding: 0rem;
             }
 
-            p:last-child {
-                color: #2D2B27;
-                font-size: 1.6rem;
-                font-weight: 500;
-                line-height: 160%;
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                border-radius: 0.5rem;
+                background: #FFFBF2;
+                padding: 10.7rem 3rem 0rem 3rem;
+                height: 37rem;
+
+                @include breakpoint($xl-bp) {
+                    padding: 2rem;
+                    height: unset;
+                    gap: 2rem;
+                }
+
+                h2 {
+                    color: #2D2B27;
+                    font-size: 2.4rem;
+                    font-weight: 700;
+                    line-height: 130%;
+
+                    @include breakpoint($sm-bp) {
+                        font-size: 1.8rem;
+                    }
+                }
+
+                p:last-child {
+                    color: #2D2B27;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    line-height: 160%;
+
+                    @include breakpoint($sm-bp) {
+                        font-size: 1.4rem;
+                    }
+                }
             }
+        }
+
+        li:nth-child(2) {
+            border-radius: 0rem 0.5rem 0.5rem 0rem;
         }
     }
 
@@ -250,7 +436,16 @@
         top: 0;
         z-index: -1;
         right: 0;
-        width: 39%;
+        width: 69%;
+        height: 100%;
+
+        @include breakpoint($xl-bp) {
+            width: 100%;
+            position: unset;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
 
         img {
             width: 100%;
@@ -262,12 +457,33 @@
 
 .main-products {
     margin-top: 20rem;
+
+    @include breakpoint($xl-bp) {
+        margin-top: 10rem;
+    }
+
+    button {
+        display: none;
+
+        @include breakpoint($xl-bp) {
+            display: flex;
+            margin-top: 4rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            width: 100%;
+        }
+    }
 }
 
 .main-products__content {
     display: flex;
     gap: 6rem;
-    padding-left: 12rem;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
 
 .main-products__text {
@@ -276,12 +492,24 @@
     gap: 5rem;
     width: 26.114%;
 
+    @include breakpoint($xl-bp) {
+        width: 100%;
+    }
+
+    @include breakpoint($lb-bp) {
+        gap: 3rem;
+    }
+
     h2 {
         color: #2D2B27;
         font-size: 3rem;
         font-weight: 700;
         line-height: 113.9%;
         text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2rem;
+        }
     }
 
     p:nth-child(2) {
@@ -289,6 +517,23 @@
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 160%;
+
+        @include breakpoint($xl-bp) {
+            padding-right: 3rem;
+        }
+
+        @include breakpoint($sm-bp) {
+            padding-right: 2rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    button {
+        display: flex;
+
+        @include breakpoint($xl-bp) {
+            display: none;
+        }
     }
 }
 
@@ -296,6 +541,10 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+
+    @include breakpoint($lb-bp) {
+        gap: 1rem;
+    }
 
     .swiper-slide__img {
         width: 100%;
@@ -314,6 +563,10 @@
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
     }
 
 }
@@ -327,6 +580,14 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
+    @include breakpoint($lb-bp) {
+        margin-top: 2rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        gap: 3rem;
+    }
 
     .main-products__pagination-container {
         width: 75%;
@@ -352,6 +613,10 @@
     display: flex;
     gap: 3rem;
 
+    @include breakpoint($sm-bp) {
+        gap: 2rem;
+    }
+
     button {
         border: 0.1rem solid #FA0;
         background: none;
@@ -362,6 +627,11 @@
         justify-content: center;
         align-items: center;
         transition: all 0.2s linear;
+
+        @include breakpoint($sm-bp) {
+            width: 4rem;
+            height: 4rem;
+        }
 
         &:first-child {
             rotate: 180deg;
@@ -393,12 +663,20 @@
 .main-contacts {
     margin-top: 20rem;
 
+    @include breakpoint($xl-bp) {
+        margin-top: 10rem;
+    }
+
     h2 {
         color: #2D2B27;
         font-size: 3rem;
         font-weight: 700;
         line-height: 113.9%;
         text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2rem;
+        }
     }
 }
 
@@ -406,8 +684,17 @@
     display: flex;
     gap: 9.4rem;
     justify-content: space-between;
-    align-items: center;
     margin-top: 5rem;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    @include breakpoint($lb-bp) {
+        gap: 3rem;
+        margin-top: 3rem;
+    }
 }
 
 .main-contacts__map {
@@ -415,6 +702,20 @@
     width: 64.735%;
     border-radius: 0.5rem;
     overflow: hidden;
+
+    @include breakpoint($xl-bp) {
+        width: 100%;
+        height: 60rem;
+        order: 1;
+    }
+
+    @include breakpoint($lb-bp) {
+        height: 45rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        height: 26rem;
+    }
 
     iframe {
         width: 100%;
@@ -426,7 +727,18 @@
     display: flex;
     flex-direction: column;
     gap: 5rem;
-    width: 38.86%;
+    width: 31.027%;
+    margin-top: 6rem;
+
+    @include breakpoint($xl-bp) {
+        margin-top: 0rem;
+        gap: 3rem;
+        width: 100%;
+    }
+
+    @include breakpoint($sm-bp) {
+        gap: 3rem;
+    }
 }
 
 .main-contacts__text-item {
@@ -436,6 +748,10 @@
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
     }
 
     p:nth-child(3) {
@@ -444,6 +760,10 @@
         font-weight: 500;
         line-height: 160%;
         padding-top: 1rem;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+        }
     }
 
     a,
@@ -456,12 +776,20 @@
         padding-bottom: 1rem;
         margin-top: 2rem;
 
+        @include breakpoint($sm-bp) {
+            margin-top: 1rem;
+        }
 
         svg {
             fill: #FFAA00;
             stroke: #FFFFFF;
             width: 2.2rem;
             height: 2.2rem;
+
+            @include breakpoint($sm-bp) {
+                width: 2rem;
+                height: 2rem;
+            }
         }
 
         p {
@@ -469,6 +797,10 @@
             font-size: 1.6rem;
             font-weight: 700;
             line-height: 160%;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.4rem;
+            }
         }
 
     }
@@ -503,17 +835,27 @@
 
 }
 
-.main-contacts__params {
-    display: flex;
-    gap: 10rem;
+.main-contacts__content {
+
 
     form {
+        margin-top: 6rem;
+
+        @include breakpoint($xl-bp) {
+            margin-top: 0rem;
+            order: 2;
+        }
+        
         p:first-child {
             color: #2D2B27;
             font-size: 2.4rem;
             font-weight: 700;
             line-height: 130%;
             text-align: center;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.8rem;
+            }
         }
 
         p:nth-child(2) {
@@ -523,6 +865,11 @@
             font-weight: 500;
             line-height: 160%;
             margin-top: 3rem;
+
+            @include breakpoint($sm-bp) {
+                margin-top: 1rem;
+                font-size: 1.4rem;
+            }
         }
 
         .main-contacts__inp-container {
@@ -533,6 +880,10 @@
 
             &:first-of-type {
                 margin-top: 1rem;
+
+                @include breakpoint($sm-bp) {
+                    margin-top: 2rem;
+                }
             }
 
             label {
@@ -540,6 +891,10 @@
                 font-size: 1.6rem;
                 font-weight: 700;
                 line-height: 160%;
+
+                @include breakpoint($sm-bp) {
+                    font-size: 1.4rem;
+                }
             }
 
             input,
@@ -554,12 +909,29 @@
                 font-weight: 500;
                 line-height: 160%;
                 resize: none;
+
+                @include breakpoint($sm-bp) {
+                    font-size: 1.2rem;
+                }
             }
         }
 
         button {
             margin-top: 3rem;
             width: 100%;
+
+            @include breakpoint($xl-bp) {
+                width: 30%;
+            }
+
+            @include breakpoint($lb-bp) {
+                width: 38%;
+            }
+
+            @include breakpoint($sm-bp) {
+                width: 100%;
+                margin-top: 4rem;
+            }
         }
     }
 }

@@ -4,17 +4,41 @@
     padding-bottom: 3rem;
     display: flex;
     justify-content: space-between;
+
+    @include breakpoint($ssh-bp) {
+        gap: 5rem;
+    }
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    @include breakpoint($lb-bp) {
+        padding-top: 3rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
 }
 
 .footer-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 31%;
+    width: 40%;
+
+
 
     div {
         display: flex;
         gap: 5rem;
+
+        @include breakpoint($xl-bp) {
+            display: none;
+        }
 
         p,
         a {
@@ -49,13 +73,36 @@
     gap: 15rem;
     width: 59.8%;
     justify-content: flex-end;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 4rem;
+        width: 42%;
+    }
+
+    @include breakpoint($lb-bp) {
+        width: 67%;
+        gap: 3rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        width: 100%;
+    }
 }
 
 .footer-right__list {
+    @include breakpoint($ssh-bp) {
+        width: 100%;
+    }
+
     ul {
         display: flex;
         flex-direction: column;
         gap: 3rem;
+
+        @include breakpoint($xl-bp) {
+            flex-direction: unset;
+        }
 
         a {
             color: #2D2B27;
@@ -76,6 +123,10 @@
             -webkit-text-fill-color: transparent;
             transition: all 0.3s ease-in-out;
 
+            @include breakpoint($sm-bp) {
+                font-size: 1.4rem;
+            }
+
             &:hover {
                 background-position: 0;
             }
@@ -88,6 +139,10 @@
 
     display: flex;
     gap: 5rem;
+
+    @include breakpoint($xl-bp) {
+        display: none;
+    }
 
     ul {
         gap: 1rem;
@@ -109,6 +164,10 @@
     flex-direction: column;
     gap: 2rem;
 
+    @include breakpoint($sm-bp) {
+        gap: 1rem;
+    }
+
     p {
         color: #2D2B27;
         font-size: 1.4rem;
@@ -129,6 +188,10 @@
             font-size: 1.6rem;
             font-weight: 700;
             line-height: 160%;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.4rem;
+            }
         }
 
         svg {
@@ -142,21 +205,25 @@
     div {
         border-bottom: 0.1rem solid #FFD480;
         padding-bottom: 2rem;
+
+        @include breakpoint($sm-bp) {
+            padding-bottom: 1rem;
+        }
     }
 
     a {
-        
+
         p {
             background-image: linear-gradient(to right,
-                #fa0,
-                #fa0 50%,
-                #2D2B27 50%);
-        background-size: 200% 100%;
-        background-position: -100%;
-        position: relative;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: all 0.3s ease-in-out;
+                    #fa0,
+                    #fa0 50%,
+                    #2D2B27 50%);
+            background-size: 200% 100%;
+            background-position: -100%;
+            position: relative;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease-in-out;
         }
 
         &:hover {
@@ -176,8 +243,79 @@
     display: flex;
     gap: 1.5rem;
 
-    button {
+    @include breakpoint($xl-bp) {
+        display: none;
+    }
+
+    a {
+        border: 0.1rem solid #2D2B27;
+        border-radius: 50%;
+        background: none;
         width: 3rem;
         height: 3rem;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+
+        &:hover {
+            border: 0.1rem solid #fa0;
+
+            svg {
+                fill: #fa0;
+            }
+        }
+    }
+}
+
+.footer-right__bottom-mobile {
+    display: none;
+
+    @include breakpoint($xl-bp) {
+        display: flex;
+        align-items: center;
+        gap: 4.4rem;
+    }
+}
+
+.footer-right__bottom-mobile-text {
+
+    p,
+    a {
+        color:#81807D;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 160%;
+        text-decoration: none;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.footer-right__bottom-mobile-btns {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+        display: flex;
+        width: 3rem;
+        height: 3rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 0.1rem solid #2D2B27;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 }

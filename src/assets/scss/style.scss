@@ -11,17 +11,17 @@ html {
     font-size: calc(100vw / 1600 * 10);
   }
 
-  @include breakpoint($cos-bp) {
-    font-size: calc(100vw / 1330 * 10);
-  }
+  // @include breakpoint($cos-bp) {
+  //   font-size: calc(100vw / 1330 * 10);
+  // }
 
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 1024 * 10);
   }
 
-  @include breakpoint($jb-bp) {
-    font-size: calc(100vw / 850 * 10);
-  }
+  // @include breakpoint($jb-bp) {
+  //   font-size: calc(100vw / 850 * 10);
+  // }
 
   @include breakpoint($lb-bp) {
     font-size: calc(100vw / 650 * 10);
@@ -42,8 +42,8 @@ html {
 }
 
 body {
-    font-family: Montserrat;
-    font-style: normal;
+  font-family: Montserrat;
+  font-style: normal;
 }
 
 
@@ -55,14 +55,87 @@ img {
 .page-padding {
   padding-left: 12rem;
   padding-right: 12rem;
+
+  @include breakpoint($ssh-bp) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  @include breakpoint($cos-bp) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  @include breakpoint($xl-bp) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+}
+
+.page-padding_left {
+  padding-left: 12rem;
+
+  @include breakpoint($ssh-bp) {
+    padding-left: 8rem;
+  }
+
+  @include breakpoint($cos-bp) {
+    padding-left: 8rem;
+  }
+
+  @include breakpoint($xl-bp) {
+    padding-left: 3rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-left: 2rem;
+  }
+}
+
+.page-padding_right {
+  padding-right: 12rem;
+
+  @include breakpoint($ssh-bp) {
+    padding-right: 8rem;
+  }
+
+  @include breakpoint($cos-bp) {
+    padding-right: 8rem;
+  }
+
+  @include breakpoint($xl-bp) {
+    padding-right: 3rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-right: 2rem;
+  }
 }
 
 .page-margin-top {
   margin-top: 9rem;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 5rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    margin-top: 2.5rem;
+  }
 }
 
 .page-margin-buttom {
   margin-bottom: 20rem;
+
+  @include breakpoint($xl-bp) {
+    margin-bottom: 10rem;
+  }
 }
 
 svg {
@@ -73,4 +146,3 @@ svg {
 @import './blocks/swiper.scss';
 @import './blocks/footer.scss';
 @import './blocks/main.scss';
-
