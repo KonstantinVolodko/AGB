@@ -20,7 +20,7 @@
         font-weight: 700;
         line-height: 140%;
         text-transform: uppercase;
-        color: #2D2B27;
+        color: var(--black);
 
         @include breakpoint($lb-bp) {
             font-size: 3.6rem;
@@ -33,12 +33,12 @@
         }
 
         span {
-            color: #FA0;
+            color: var(--orange);
         }
     }
 
     p {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 160%;
@@ -72,7 +72,7 @@
     }
 
     p:first-child {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
@@ -83,7 +83,7 @@
     }
 
     p:nth-child(2) {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 160%;
@@ -96,7 +96,7 @@
     }
 
     a {
-        color: #FA0;
+        color: var(--orange);
         font-size: 1.6rem;
         font-weight: 700;
         line-height: 110%;
@@ -104,15 +104,15 @@
         display: flex;
         gap: 1rem;
         text-decoration: none;
-        border-bottom: 0.1rem solid #FA0;
+        border-bottom: 0.1rem solid var(--orange);
         align-items: center;
         width: fit-content;
         margin-top: 10rem;
 
         background-image: linear-gradient(to right,
-                #2d2b27,
-                #2d2b27 50%,
-                #FA0 50%);
+        var(--black),
+        var(--black) 50%,
+        var(--orange) 50%);
         background-size: 200% 100%;
         background-position: -100%;
         position: relative;
@@ -131,10 +131,10 @@
 
         &:hover {
             background-position: 0;
-            border-color: #2D2B27;
+            border-color: var(--black);
 
             svg {
-                fill: #2d2b27;
+                fill: var(--black);
             }
         }
 
@@ -189,7 +189,7 @@
     justify-content: space-between;
 
     h2 {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 3rem;
         font-weight: 700;
         line-height: 113.9%;
@@ -201,7 +201,7 @@
     }
 
     div {
-        background: #FA0;
+        background: var(--orange);
         height: 0.1rem;
         width: 0%;
         transform-origin: right;
@@ -232,7 +232,7 @@
     }
 
     p:first-child {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 15rem;
         font-weight: 700;
         line-height: 113.9%;
@@ -249,7 +249,7 @@
     }
 
     p:nth-child(2) {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 160%;
@@ -272,7 +272,7 @@
     }
 
     .main-about-company__line {
-        background: #FA0;
+        background: var(--orange);
         height: 0.1rem;
         width: 0%;
         transform-origin: left;
@@ -318,7 +318,7 @@
         }
 
         p:first-child {
-            color: #FA0;
+            color: var(--orange);
             font-size: 10rem;
             font-weight: 700;
             line-height: normal;
@@ -341,7 +341,7 @@
         }
 
         span {
-            color: #2D2B27;
+            color: var(--black);
             font-size: 1.6rem;
             font-weight: 500;
             line-height: 160%;
@@ -380,7 +380,7 @@
         li {
             padding: 1.5rem;
             width: 50%;
-            background: #FFF;
+            background: var(--white);
 
             @include breakpoint($xl-bp) {
                 width: 100%;
@@ -403,7 +403,7 @@
                 }
 
                 h2 {
-                    color: #2D2B27;
+                    color: var(--black);
                     font-size: 2.4rem;
                     font-weight: 700;
                     line-height: 130%;
@@ -414,7 +414,7 @@
                 }
 
                 p:last-child {
-                    color: #2D2B27;
+                    color: var(--black);
                     font-size: 1.6rem;
                     font-weight: 500;
                     line-height: 160%;
@@ -501,7 +501,7 @@
     }
 
     h2 {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 3rem;
         font-weight: 700;
         line-height: 113.9%;
@@ -513,7 +513,7 @@
     }
 
     p:nth-child(2) {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 1.6rem;
         font-weight: 500;
         line-height: 160%;
@@ -559,7 +559,7 @@
     }
 
     p {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
@@ -597,7 +597,7 @@
 
         div {
             height: 100%;
-            background-color: #FA0;
+            background-color: var(--orange);
             width: 0;
             transition: width 0.3s;
         }
@@ -618,7 +618,7 @@
     }
 
     button {
-        border: 0.1rem solid #FA0;
+        border: 0.1rem solid var(--orange);
         background: none;
         border-radius: 50%;
         width: 4.8rem;
@@ -642,17 +642,17 @@
         }
 
         &:hover {
-            background: #FA0;
+            background: var(--orange);
             transition: all 0.2s linear;
 
             svg {
-                stroke: #FFFFFF;
+                stroke: var(--white);
             }
         }
 
         svg {
             fill: transparent;
-            stroke: #FA0;
+            stroke: var(--orange);
             width: 1rem;
             height: 1rem;
         }
@@ -668,7 +668,7 @@
     }
 
     h2 {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 3rem;
         font-weight: 700;
         line-height: 113.9%;
@@ -744,7 +744,7 @@
 .main-contacts__text-item {
 
     p:first-child {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 2.4rem;
         font-weight: 700;
         line-height: 130%;
@@ -755,7 +755,7 @@
     }
 
     p:nth-child(3) {
-        color: #81807D;
+        color: var(--gray);
         font-size: 1.4rem;
         font-weight: 500;
         line-height: 160%;
@@ -782,7 +782,7 @@
 
         svg {
             fill: #FFAA00;
-            stroke: #FFFFFF;
+            stroke: var(--white);
             width: 2.2rem;
             height: 2.2rem;
 
@@ -793,7 +793,7 @@
         }
 
         p {
-            color: #2D2B27;
+            color: var(--black);
             font-size: 1.6rem;
             font-weight: 700;
             line-height: 160%;
@@ -809,9 +809,9 @@
 
         p {
             background-image: linear-gradient(to right,
-                    #fa0,
-                    #fa0 50%,
-                    #2D2B27 50%);
+            var(--orange),
+            var(--orange) 50%,
+                    var(--black) 50%);
             background-size: 200% 100%;
             background-position: -100%;
             position: relative;
@@ -827,8 +827,8 @@
             }
 
             svg {
-                fill: #FFFFFF;
-                stroke: #FA0;
+                fill: var(--white);
+                stroke: var(--orange);
             }
         }
     }
@@ -847,7 +847,7 @@
         }
         
         p:first-child {
-            color: #2D2B27;
+            color: var(--black);
             font-size: 2.4rem;
             font-weight: 700;
             line-height: 130%;
@@ -859,7 +859,7 @@
         }
 
         p:nth-child(2) {
-            color: #2D2B27;
+            color: var(--black);
             text-align: center;
             font-size: 1.6rem;
             font-weight: 500;
@@ -887,7 +887,7 @@
             }
 
             label {
-                color: #2D2B27;
+                color: var(--black);
                 font-size: 1.6rem;
                 font-weight: 700;
                 line-height: 160%;
@@ -900,11 +900,11 @@
             input,
             textArea {
                 border-radius: 0.5rem;
-                border: 0.1rem solid #2D2B27;
+                border: 0.1rem solid var(--black);
                 padding: 1.5rem 2rem;
                 outline: none;
 
-                color: #81807D;
+                color: var(--gray);
                 font-size: 1.4rem;
                 font-weight: 500;
                 line-height: 160%;

@@ -52,6 +52,8 @@ img {
   image-rendering: -webkit-optimize-contrast;
 }
 
+
+
 .page-padding {
   padding-left: 12rem;
   padding-right: 12rem;
@@ -130,7 +132,7 @@ img {
   }
 }
 
-.page-margin-buttom {
+.page-margin-bottom {
   margin-bottom: 20rem;
 
   @include breakpoint($xl-bp) {
@@ -146,3 +148,4 @@ svg {
 @import './blocks/swiper.scss';
 @import './blocks/footer.scss';
 @import './blocks/main.scss';
+@import './blocks/catalog.scss';

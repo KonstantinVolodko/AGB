@@ -42,7 +42,7 @@
 
         p,
         a {
-            color: #81807D;
+            color: var(--gray);
             font-size: 1.4rem;
             font-weight: 500;
             line-height: 160%;
@@ -51,9 +51,9 @@
 
         a {
             background-image: linear-gradient(to right,
-                    #fa0,
-                    #fa0 50%,
-                    #81807D 50%);
+            var(--orange),
+            var(--orange) 50%,
+                    var(--gray) 50%);
             background-size: 200% 100%;
             background-position: -100%;
             position: relative;
@@ -105,7 +105,7 @@
         }
 
         a {
-            color: #2D2B27;
+            color: var(--black);
             font-size: 1.6rem;
             font-weight: 500;
             line-height: normal;
@@ -113,9 +113,9 @@
             text-decoration: none;
 
             background-image: linear-gradient(to right,
-                    #fa0,
-                    #fa0 50%,
-                    #2D2B27 50%);
+            var(--orange),
+            var(--orange) 50%,
+                    var(--black) 50%);
             background-size: 200% 100%;
             background-position: -100%;
             position: relative;
@@ -169,7 +169,7 @@
     }
 
     p {
-        color: #2D2B27;
+        color: var(--black);
         font-size: 1.4rem;
         font-weight: 500;
         line-height: 160%;
@@ -183,8 +183,7 @@
         align-items: center;
 
         p {
-            color: #2D2B27;
-            font-family: Montserrat;
+            color: var(--black);
             font-size: 1.6rem;
             font-weight: 700;
             line-height: 160%;
@@ -197,8 +196,8 @@
         svg {
             width: 2rem;
             height: 2rem;
-            fill: #FA0;
-            stroke: #FFFFFF;
+            fill: var(--orange);
+            stroke: var(--white);
         }
     }
 
@@ -215,9 +214,9 @@
 
         p {
             background-image: linear-gradient(to right,
-                    #fa0,
-                    #fa0 50%,
-                    #2D2B27 50%);
+            var(--orange),
+            var(--orange) 50%,
+                    var(--black) 50%);
             background-size: 200% 100%;
             background-position: -100%;
             position: relative;
@@ -232,8 +231,8 @@
             }
 
             svg {
-                fill: #FFFFFF;
-                stroke: #FA0;
+                fill: var(--white);
+                stroke: var(--orange);
             }
         }
     }
@@ -248,7 +247,7 @@
     }
 
     a {
-        border: 0.1rem solid #2D2B27;
+        border: 0.1rem solid var(--black);
         border-radius: 50%;
         background: none;
         width: 3rem;
@@ -265,10 +264,10 @@
         }
 
         &:hover {
-            border: 0.1rem solid #fa0;
+            border: 0.1rem solid var(--orange);
 
             svg {
-                fill: #fa0;
+                fill: var(--orange);
             }
         }
     }
@@ -288,7 +287,7 @@
 
     p,
     a {
-        color:#81807D;
+        color:var(--gray);
         font-size: 1.4rem;
         font-weight: 500;
         line-height: 160%;
@@ -311,11 +310,178 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        border: 0.1rem solid #2D2B27;
+        border: 0.1rem solid var(--black);
 
         svg {
             width: 100%;
             height: 100%;
         }
     }
+}
+
+.feedback-modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feedback-modal.open {
+    opacity: 1;
+}
+
+.feedback-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10rem;
+    border-radius: 0.5rem;
+    width: 40%;
+    transform: translateY(-5rem);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    @include breakpoint($ssh-bp) {
+        padding: 4rem;
+    }
+
+    @include breakpoint($xl-bp) {
+        width: 60%;
+    }
+
+    @include breakpoint($lb-bp) {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    h2 {
+        color: var(--black);
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 130%;
+        text-align: center;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
+    }
+
+    p {
+        color: var(--black);
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 160%;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 3rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            width: 100%;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        color: var(--black);
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 160%;
+        margin-top: 2rem;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.4rem;
+        }
+    }
+
+    input, textarea {
+        border-radius: 0.5rem;
+        border: 0.1rem solid var(--black);
+        padding: 1.5rem 2rem;
+        outline: none;
+        resize: none;
+        margin-top: 1rem;
+
+        color:var(--gray);
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 160%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+        }
+    }
+
+    button {
+        margin-top: 3rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 4rem;
+        }
+    }
+}
+
+.feedback-modal.open .feedback-modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 2.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.catalog-filter-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.catalog-filter-modal.open {
+    opacity: 1;
+}
+
+.catalog-filter-modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    width: 100%;
+    transform: translateY(-5rem);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.catalog-filter-modal.open .catalog-filter-modal-content {
+    transform: translateY(0);
+    opacity: 1;
 }

@@ -1,0 +1,290 @@
+.bread-crumbs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 4rem;
+
+    @include breakpoint($sm-bp) {
+        margin-bottom: 2rem;
+    }
+
+    a,
+    p {
+        color: var(--gray);
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 160%;
+        text-decoration: none;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+        }
+    }
+
+    p {
+        color: var(--black);
+    }
+
+    a:last-child {
+        color: var(--black);
+    }
+}
+
+.catalog {
+    h1 {
+        color: var(--black);
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 140%;
+        text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2.8rem;
+        }
+    }
+}
+
+.catalog-position {
+    display: flex;
+    gap: 10rem;
+    margin-top: 5rem;
+
+    @include breakpoint($xl-bp) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    @include breakpoint($xl-bp) {
+        margin-top: 2rem;
+    }
+
+    @include breakpoint($sm-bp) {
+        margin-top: 4rem;
+    }
+}
+
+.catalog-filter {
+    width: 26.198%;
+
+    @include breakpoint($xl-bp) {
+        display: none;
+    }
+
+    h2 {
+        color: var(--black);
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 130%;
+    }
+}
+
+.catalog-filter-button {
+    display: none;
+    background: none;
+    gap: 1rem;
+    border: none;
+    align-items: center;
+    border-radius: 0.5rem;
+    background: #FFFBF2;
+    padding: 1rem 2rem;
+
+    @include breakpoint($xl-bp) {
+        display: flex;
+    }
+
+    svg {
+        width: 3rem;
+        height: 3rem;
+
+        @include breakpoint($sm-bp) {
+            width: 2.1rem;
+            height: 2.1rem;
+        }
+    }
+
+    span {
+        color: var(--black);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 140%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.catalog-filter__accordion {
+    background: none;
+    color: var(--black);
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--black);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 160%;
+
+
+    .arrow {
+        border: solid var(--black);
+        border-width: 0 0.2rem 0.2rem 0;
+        display: inline-block;
+        transform: rotate(45deg);
+        padding: 0.4rem;
+        margin-bottom: 0.4rem;
+        transition: all 0.2s linear;
+    }
+
+    .arrow.active {
+        transform: rotate(-135deg);
+    }
+}
+
+.catalog-filter ul {
+    padding-left: 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 55%;
+
+    li {
+
+        a {
+            color: var(--black);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 160%;
+            text-decoration: none;
+        }
+    }
+}
+
+.catalog-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    width: 100%;
+
+    @include breakpoint($lb-bp) {
+        column-gap: 2rem;
+        row-gap: 4rem;
+    }    
+
+    li {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 31.71%;
+
+        @include breakpoint($ssh-bp) {
+            width: 31.4%;
+        }
+
+        @include breakpoint($xl-bp) {
+            width: 31.2%;
+        }
+
+        @include breakpoint($lb-bp) {
+            width: 48.2%;
+        }
+
+        @include breakpoint($sm-bp) {
+            width: 46.9%;
+        }
+        
+        a {
+            text-decoration: none;
+
+            @include breakpoint($sm-bp) {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .catalog-content__img {
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        p {
+            color: var(--black);
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 160%;
+            text-align: center;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.4rem;
+                line-height: 120%;
+                text-align: left;
+            }
+        }
+    }
+}
+
+.catalog-filter-modal-content {
+
+    h2 {
+        color: var(--black);
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 130%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.8rem;
+        }
+    }
+
+    ul {
+        padding-left: 2rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 55%;
+
+        li {
+
+            a {
+                color: var(--black);
+                font-size: 1.4rem;
+                font-weight: 500;
+                line-height: 160%;
+                text-decoration: none;
+
+                @include breakpoint($sm-bp) {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    button {
+
+        @include breakpoint($sm-bp) {
+            margin-top: 2rem;
+            font-size: 1.4rem;
+        }
+
+    }
+}

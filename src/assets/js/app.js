@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //= components/
 
 
-    var textElement = document.querySelector(".header__logo");
-    var textToType = "AGB Trading\ncompany";
+    let textElement = document.querySelector(".header__logo");
+    let textToType = "AGB Trading\ncompany";
     textElement.innerText = "";
 
     function typeText(text, i) {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     if (window.matchMedia("(min-width: 500px)").matches) {
         gsap.from(".main-about-company__top-container h2", {
             x: "-100%",
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     if (window.matchMedia("(min-width: 500px)").matches) {
         gsap.to(".main-about-company__bottom-container .main-about-company__line", {
             width: "39.556%",
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     if (window.matchMedia("(min-width: 500px)").matches) {
         gsap.from(".main-products__text h2", {
             x: "-100%",
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     if (window.matchMedia("(min-width: 500px)").matches) {
         gsap.from(".main-contacts h2", {
             x: "-100%",
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
 
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('scroll', () => {
         const bottomContainer = document.querySelector('.main-about-company__bottom-container');
-        if (!animationTriggered && isElementInViewport(bottomContainer)) {
+        if (bottomContainer && !animationTriggered && isElementInViewport(bottomContainer)) {
             animateNumbers();
             animationTriggered = true;
             const letters = document.querySelectorAll('.main-about-company__letter p');
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (headerSearchInp.offsetWidth > "0") {
             headerSearchInp.style.width = "0rem"
             headerSearchInp.style.paddingLeft = "0rem"
-        }else {
+        } else {
             headerSearchInp.style.width = "24rem"
             headerSearchInp.style.paddingLeft = "0.5rem"
         }
@@ -195,27 +195,27 @@ document.addEventListener("DOMContentLoaded", () => {
         constructor(modalId, openButtons) {
             this.modal = document.getElementById(modalId);
             this.openButtons = [];
-    
+
             if (typeof openButtons === 'string') {
                 this.openButtons = Array.from(document.getElementsByClassName(openButtons));
             } else if (Array.isArray(openButtons)) {
                 this.openButtons = openButtons.map(buttonId => document.getElementById(buttonId));
             }
-    
+
             this.openButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     this.open();
                     this.disableBodyScroll();
                 });
             });
-    
+
             window.addEventListener('click', (event) => {
                 if (event.target === this.modal) {
                     this.close();
                     this.enableBodyScroll();
                 }
             });
-    
+
             const closeButton = this.modal.querySelector('.close');
             if (closeButton) {
                 closeButton.addEventListener('click', () => {
@@ -223,40 +223,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     this.enableBodyScroll();
                 });
             }
-            
+
         }
-    
+
         open() {
             this.modal.style.display = 'block';
             setTimeout(() => {
                 this.modal.classList.add('open');
             }, 10);
         }
-    
+
         close() {
             this.modal.classList.remove('open');
             setTimeout(() => {
                 this.modal.style.display = 'none';
             }, 300);
         }
-    
+
         disableBodyScroll() {
             const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.paddingRight = scrollBarWidth + 'px';
             document.body.style.overflow = 'hidden';
         }
-    
+
         enableBodyScroll() {
             document.body.style.paddingRight = '';
             document.body.style.overflow = '';
         }
     }
-    
+
     const myModalByClass = new Modal('header__burger-modal');
+    const feedBackModal = new Modal('feedback-modal', 'header__form-button');
+    const filterModal = new Modal('catalog-filter-modal', 'catalog-filter-button');
 
     let headerBurgerModal = document.querySelector('.header__burger-modal')
     headerBurgerModal.style.marginTop = `${document.querySelector('.header__content').scrollHeight}px`
-    
+
 
     document.querySelector('.header__burger-modal-menu').innerHTML = document.querySelector('.header__menu-list').innerHTML
     document.querySelector('.header__burger-modal-search').innerHTML = document.querySelector('.header__search').innerHTML
@@ -266,19 +268,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let headerBurgerButton = document.querySelector('.header__burger-button')
     headerBurgerButton.addEventListener('click', e => {
-        // if (headerBurgerModal.classList.contains("open")) {
-        //     headerBurgerButton.classList.add('cross')
-        // }else {
-        //     headerBurgerButton.classList.remove('cross')
-        // }
         if (!headerBurgerModal.classList.contains("open")) {
             myModalByClass.open()
             headerBurgerButton.classList.add('cross')
-        }else if (headerBurgerModal.classList.contains("open")) {
+        } else if (headerBurgerModal.classList.contains("open")) {
             myModalByClass.close()
             headerBurgerButton.classList.remove('cross')
         }
 
     })
 
+    document.querySelector('.catalog-filter-modal-content div').innerHTML = document.querySelector('.catalog-filter').innerHTML
+
+    let acc = document.getElementsByClassName("catalog-filter__accordion");
+
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.paddingTop = "0px";
+                panel.style.maxHeight = null;
+                this.querySelector('.arrow').classList.remove('active')
+            } else {
+                panel.style.paddingTop = "15px";
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                this.querySelector('.arrow').classList.add('active')
+                
+            }
+        });
+    }
+
+    acc[0].click()
+
+    // let acc1 = document.getElementsByClassName("catalog-filter__accordion");
+
+    // for (let i = 0; i < acc.length; i++) {
+    //     acc[i].addEventListener("click", function () {
+    //         this.classList.toggle("active");
+    //         let panel = this.nextElementSibling;
+    //         if (panel.style.maxHeight) {
+    //             panel.style.paddingTop = "0px";
+    //             panel.style.maxHeight = null;
+    //             this.querySelector('.arrow').classList.remove('active')
+    //         } else {
+    //             panel.style.paddingTop = "15px";
+    //             panel.style.maxHeight = panel.scrollHeight + "px";
+    //             this.querySelector('.arrow').classList.add('active')
+                
+    //         }
+    //     });
+    // }
+
+    
 })
