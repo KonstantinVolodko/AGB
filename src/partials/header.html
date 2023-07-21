@@ -14,15 +14,24 @@
                     <i class="arrow"></i>
                 </button>
                 <ul class="header__language-dropdown">
-                    <li>EN</li>
-                    <li>EN</li>
-                    <li>EN</li>
-                    <li>EN</li>
+                    <li><a href="#">EN</a></li>
+                    <li><a href="#">EN</a></li>
                 </ul>
             </div>
 
             <div class="header__search">
-                <input type="text" placeholder="Найти">
+                
+                <div class="header__search-field">
+                    <form action="#">
+                        <input type="text" placeholder="Найти">
+                    </form>
+                    <ul>
+                        <li>Масло подсолнечное рафинированное</li>
+                        <li>Масло подсолнечное не рафинированное</li>
+                        <li>Масло льняное</li>
+                        <li>Масло соевое</li>
+                    </ul>
+                </div>
                 <button>
                     <svg>
                         <use href="#searchIco"></use>
@@ -31,7 +40,7 @@
 
             </div>
 
-            <button class="header__form-button orange-btn">Написать</button>
+            <button class="header__form-button orange-btn feedback-modal-btn">Написать</button>
 
             <button class="header__burger-button">
                 <div></div>
@@ -45,7 +54,7 @@
         <div class="header__burger-modal-content page-padding">
             <ul class="header__burger-modal-menu"></ul>
             <div class="header__burger-modal-search"></div>
-            <button class="header__burger-modal-button orange-btn"></button>
+            <button class="header__burger-modal-button orange-btn feedback-modal-btn"></button>
         </div>
     </div>
 </header>

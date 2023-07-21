@@ -2,6 +2,7 @@
     display: flex;
     gap: 0.5rem;
     margin-bottom: 4rem;
+    flex-wrap: wrap;
 
     @include breakpoint($sm-bp) {
         margin-bottom: 2rem;
@@ -30,17 +31,7 @@
 }
 
 .catalog {
-    h1 {
-        color: var(--black);
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 140%;
-        text-transform: uppercase;
 
-        @include breakpoint($sm-bp) {
-            font-size: 2.8rem;
-        }
-    }
 }
 
 .catalog-position {

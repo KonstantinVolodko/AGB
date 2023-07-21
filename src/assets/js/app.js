@@ -114,8 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let animationTriggered = false;
 
     document.addEventListener('scroll', () => {
-        const bottomContainer = document.querySelector('.main-about-company__bottom-container');
+        const bottomContainer = document.querySelector('.main-about-company__letter-container');
         if (bottomContainer && !animationTriggered && isElementInViewport(bottomContainer)) {
+            animateNumbers();
+            animationTriggered = true;
+            const letters = document.querySelectorAll('.main-about-company__letter p');
+            letters.forEach(e => {
+                e.classList.add('opacity')
+            })
+        }
+    });
+
+    document.addEventListener('scroll', () => {
+        const aboutCompanybottomContainer = document.querySelector('.aboutCompany__numbers');
+        if (aboutCompanybottomContainer && !animationTriggered && isElementInViewport(aboutCompanybottomContainer)) {
             animateNumbers();
             animationTriggered = true;
             const letters = document.querySelectorAll('.main-about-company__letter p');
@@ -147,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         breakpoints: {
             500: {
-                slidesPerView: 2.4,
+                slidesPerView: 2.2,
                 spaceBetween: 20,
             },
 
@@ -159,72 +171,136 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updatePaginationProgress() {
-        const slideWidth = this.slides[0].offsetWidth;
-        const slideGap = parseInt(window.getComputedStyle(this.slides[0]).marginRight);
-        const slidesInView = this.slides.length / this.params.slidesPerView;
-        const progress = Math.ceil(this.realIndex + 2) / slidesInView;
+        const parentWidth = document.querySelector('.main-products__pagination-container').offsetWidth;
+        const slideCount = this.slides.length;
+        const slidesInView = this.params.slidesPerView;
+        const progress = (this.realIndex + slidesInView) / slideCount;
         const paginationBar = document.querySelector('.main-products__pagination-container div');
-        paginationBar.style.width = `${(slideWidth + slideGap) * progress}px`;
+        const slideWidthPercentage = 100 / slidesInView;
+        const slideGapPercentage = (100 - slideWidthPercentage) / (slideCount - slidesInView);
+        const paginationBarWidth = (slideWidthPercentage * progress) + (slideGapPercentage * this.realIndex);
+        paginationBar.style.width = `${paginationBarWidth}%`;
     }
-
+    
+    let headerLanguage = document.querySelector('.header__language')
     let headerLanguageBtn = document.querySelector('.header__language button')
     let headerLanguageDropdown = document.querySelector('.header__language-dropdown')
+
+    let hideLanguage = () => {
+        headerLanguageDropdown.style.border = 'none'
+        headerLanguageDropdown.style.height = '0';
+        headerLanguage.classList.remove('active')
+    }
+
+    let showLanguage = () => {
+        headerLanguageDropdown.style.borderLeft = '0.1rem solid #E1E1E1';
+        headerLanguageDropdown.style.borderRight = '0.1rem solid #E1E1E1';
+        headerLanguageDropdown.style.borderBottom = '0.1rem solid #E1E1E1';
+        headerLanguageDropdown.style.height = `${headerLanguageDropdown.scrollHeight}px`;
+        headerLanguage.classList.add('active')
+    }
+ 
     headerLanguageBtn.addEventListener('click', e => {
         if (headerLanguageDropdown.offsetHeight > 0) {
-            headerLanguageDropdown.style.height = '0';
+            hideLanguage()
         } else {
-            headerLanguageDropdown.style.height = `${headerLanguageDropdown.scrollHeight}px`;
+            showLanguage()
         }
     })
 
-    let headerSearchBtn = document.querySelector('.header__search button')
-    let headerSearchInp = document.querySelector('.header__search input')
+    let headerSearchBtn = document.querySelector('.header__search button');
+    let headerSearchContainer = document.querySelector('.header__search .header__search-field');
+    let headerSearchList = document.querySelector('.header__search ul');
+    let headerSearchInput = document.querySelector('.header__search .header__search-field input');
 
     headerSearchBtn.addEventListener('click', e => {
-        if (headerSearchInp.offsetWidth > "0") {
-            headerSearchInp.style.width = "0rem"
-            headerSearchInp.style.paddingLeft = "0rem"
+        if (headerSearchContainer.offsetWidth > 0 && headerSearchInput.value === "") {
+            closeHeaderSearchContainer();
         } else {
-            headerSearchInp.style.width = "24rem"
-            headerSearchInp.style.paddingLeft = "0.5rem"
+            openHeaderSearchContainer();
+            hideLanguage()
         }
+    });
 
-    })
+    headerSearchContainer.addEventListener('keyup', () => {
+        if (headerSearchInput.value === "") {
+            if (headerSearchContainer.offsetWidth > 0) {
+                closeHeaderSearchContainer();
+            }
+        } else {
+            openHeaderSearchContainer();
+        }
+        headerSearchList.style.height = "max-content";
+        headerSearchList.style.marginTop = "2rem";
+    });
+
+    function closeHeaderSearchContainer() {
+        headerSearchContainer.style.width = "0rem";
+        headerSearchContainer.style.padding = "0rem";
+        headerSearchContainer.style.overflow = "hidden";
+    }
+
+    function openHeaderSearchContainer() {
+        headerSearchContainer.style.width = "58rem";
+        headerSearchContainer.style.padding = "2rem";
+        headerSearchContainer.style.overflow = "visible";
+    }
+
+    document.addEventListener('click', e => {
+        if (!headerSearchContainer.contains(e.target) && headerSearchContainer.offsetWidth > 0) {
+            closeHeaderSearchContainer();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (headerSearchContainer.offsetWidth > 0) {
+            closeHeaderSearchContainer();
+        }
+    });
+
+
+
 
     class Modal {
         constructor(modalId, openButtons) {
-            this.modal = document.getElementById(modalId);
-            this.openButtons = [];
+        this.modal = document.getElementById(modalId);
+        this.openButtons = [];
 
-            if (typeof openButtons === 'string') {
-                this.openButtons = Array.from(document.getElementsByClassName(openButtons));
-            } else if (Array.isArray(openButtons)) {
-                this.openButtons = openButtons.map(buttonId => document.getElementById(buttonId));
-            }
-
-            this.openButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    this.open();
-                    this.disableBodyScroll();
-                });
-            });
-
-            window.addEventListener('click', (event) => {
-                if (event.target === this.modal) {
-                    this.close();
-                    this.enableBodyScroll();
+        if (typeof openButtons === 'string') {
+            this.openButtons = Array.from(document.getElementsByClassName(openButtons));
+        } else if (Array.isArray(openButtons)) {
+            this.openButtons = openButtons.map(buttonId => document.getElementById(buttonId));
+        } else if (typeof openButtons === 'object') {
+            for (const className in openButtons) {
+                if (openButtons.hasOwnProperty(className)) {
+                    this.openButtons.push(...Array.from(document.getElementsByClassName(className)));
                 }
-            });
-
-            const closeButton = this.modal.querySelector('.close');
-            if (closeButton) {
-                closeButton.addEventListener('click', () => {
-                    this.close();
-                    this.enableBodyScroll();
-                });
             }
-
         }
+
+        this.openButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.open();
+                this.disableBodyScroll();
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === this.modal) {
+                this.close();
+                this.enableBodyScroll();
+            }
+        });
+
+        const closeButton = this.modal.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                this.close();
+                this.enableBodyScroll();
+            });
+        }
+
+    }
 
         open() {
             this.modal.style.display = 'block';
@@ -250,14 +326,18 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.style.paddingRight = '';
             document.body.style.overflow = '';
         }
+        
     }
 
     const myModalByClass = new Modal('header__burger-modal');
-    const feedBackModal = new Modal('feedback-modal', 'header__form-button');
+    const feedBackModal = new Modal('feedback-modal', 'feedback-modal-btn');
     const filterModal = new Modal('catalog-filter-modal', 'catalog-filter-button');
 
     let headerBurgerModal = document.querySelector('.header__burger-modal')
     headerBurgerModal.style.marginTop = `${document.querySelector('.header__content').scrollHeight}px`
+
+    let catalogFilterModal = document.querySelector('.catalog-filter-modal')
+    catalogFilterModal.style.marginTop = `${document.querySelector('.header__content').scrollHeight}px`
 
 
     document.querySelector('.header__burger-modal-menu').innerHTML = document.querySelector('.header__menu-list').innerHTML
@@ -271,14 +351,20 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!headerBurgerModal.classList.contains("open")) {
             myModalByClass.open()
             headerBurgerButton.classList.add('cross')
+            document.body.style.overflow = 'hidden';
         } else if (headerBurgerModal.classList.contains("open")) {
             myModalByClass.close()
             headerBurgerButton.classList.remove('cross')
+            document.body.style.overflow = '';
         }
 
     })
 
-    document.querySelector('.catalog-filter-modal-content div').innerHTML = document.querySelector('.catalog-filter').innerHTML
+    if (document.querySelector('.catalog-filter-modal-content div') && document.querySelector('.catalog-filter')) {
+        document.querySelector('.catalog-filter-modal-content div').innerHTML = document.querySelector('.catalog-filter').innerHTML
+    }
+
+
 
     let acc = document.getElementsByClassName("catalog-filter__accordion");
 
@@ -294,31 +380,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 panel.style.paddingTop = "15px";
                 panel.style.maxHeight = panel.scrollHeight + "px";
                 this.querySelector('.arrow').classList.add('active')
-                
+
             }
         });
     }
 
-    acc[0].click()
+    if (acc[0]) {
+        acc[0].click()
+    }
 
-    // let acc1 = document.getElementsByClassName("catalog-filter__accordion");
+    let mobileSearchList = document.querySelector('.header__burger-modal-search ul')
+    let mobileSearchInput = document.querySelector('.header__burger-modal-search input')
 
-    // for (let i = 0; i < acc.length; i++) {
-    //     acc[i].addEventListener("click", function () {
-    //         this.classList.toggle("active");
-    //         let panel = this.nextElementSibling;
-    //         if (panel.style.maxHeight) {
-    //             panel.style.paddingTop = "0px";
-    //             panel.style.maxHeight = null;
-    //             this.querySelector('.arrow').classList.remove('active')
-    //         } else {
-    //             panel.style.paddingTop = "15px";
-    //             panel.style.maxHeight = panel.scrollHeight + "px";
-    //             this.querySelector('.arrow').classList.add('active')
-                
-    //         }
-    //     });
-    // }
+    mobileSearchInput.addEventListener('keyup', () => {
+        mobileSearchList.style.height = "max-content";
+        mobileSearchList.style.marginTop = "1rem";
+    });
 
-    
+    let prevScrollPosition = window.pageYOffset;
+    let header = document.querySelector('.header');
+    let headerHeight = header.offsetHeight;
+
+
+    window.onscroll = function () {
+        let currentScrollPosition = window.pageYOffset;
+
+        if (prevScrollPosition > currentScrollPosition) {
+            header.style.top = "0";
+        } else {
+            header.style.top = `-${headerHeight + 20 + 'px'}`;
+            hideLanguage()
+            closeHeaderSearchContainer()
+        }
+
+        prevScrollPosition = currentScrollPosition;
+    }
+
 })

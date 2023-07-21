@@ -1,3 +1,10 @@
+.header {
+    position: sticky;
+    transition: all 0.2s linear;
+    z-index: 2;
+    background: var(--white);
+}
+
 .header__content {
     display: flex;
     justify-content: space-between;
@@ -21,7 +28,7 @@
         @include breakpoint($xl-bp) {
             display: none;
         }
-        
+
 
         li {
             a {
@@ -33,8 +40,8 @@
                 text-decoration: none;
 
                 background-image: linear-gradient(to right,
-                var(--orange),
-                var(--orange) 50%,
+                        var(--orange),
+                        var(--orange) 50%,
                         var(--black) 50%);
                 background-size: 200% 100%;
                 background-position: -100%;
@@ -53,6 +60,13 @@
     .header__language {
         margin-left: 3rem;
         position: relative;
+        padding: 2rem;
+        border: 0.1rem solid transparent;
+        border-bottom: none;
+
+        @include breakpoint($sm-bp) {
+            padding: 1rem;
+        }
 
         button {
             border: none;
@@ -86,13 +100,22 @@
             height: 0rem;
             position: absolute;
             flex-direction: column;
-            width: 100%;
             gap: 1.5rem;
-            width: 100%;
+            width: calc(100% + 0.2rem);
             background: var(--white);
-            box-shadow: 0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10);
             overflow: hidden;
             transition: height 0.1s linear;
+            border-radius: 0 0 0.5rem 0.5rem;
+            left: -0.1rem;
+            z-index: 11;
+            // box-shadow: 0px 0px 0px 0px transparent,
+            //     0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10),
+            //     0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10),
+            //     0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10);
+
+            @include breakpoint($sm-bp) {
+                gap: 1rem;
+            }
 
             li {
                 color: var(--black);
@@ -100,7 +123,19 @@
                 font-weight: 500;
                 text-transform: uppercase;
                 cursor: pointer;
-                padding: 0.5rem;
+                padding: 0.5rem 2rem 0.5rem 2rem;
+
+                @include breakpoint($sm-bp) {
+                    padding: 0.5rem 1rem 0.5rem 1rem;
+                }
+
+                &:first-child {
+                    padding-top: 1rem;
+                }
+
+                &:last-child {
+                    padding-bottom: 1rem;
+                }
             }
         }
 
@@ -109,8 +144,16 @@
         }
     }
 
+    .header__language.active {
+        border-radius: 0.5rem 0.5rem 0 0;
+        border: 0.1rem solid #E1E1E1;
+        border-bottom: none;
+        background: var(--white);
+        box-shadow: 0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10);
+    }
+
     .header__search {
-        margin-left: 8rem;
+        margin-left: 5rem;
         position: relative;
 
         @include breakpoint($xl-bp) {
@@ -120,6 +163,8 @@
         button {
             border: none;
             background: none;
+            position: inherit;
+            z-index: 2;
 
             svg {
                 fill: transparent;
@@ -129,19 +174,49 @@
             }
         }
 
-        input {
-
+        .header__search-field {
             position: absolute;
-            right: 4rem;
+            right: -1rem;
+            top: -1.4rem;
             width: 0;
+            height: 0;
             height: 100%;
             border: none;
-            border-bottom: 0.1rem solid var(--black);
             outline: none;
             transition: all 0.2s linear;
             color: var(--black);
             font-size: 1.6rem;
             font-weight: 500;
+            // overflow: hidden;
+            background: var(--white);
+            border-radius: 0.5rem;
+            // border: 0.1rem solid #E1E1E1;
+            box-shadow: 0px .4rem 1.4rem 0px rgba(35, 30, 1, 0.10);
+            height: fit-content;
+            overflow: hidden;
+            // padding: 2rem;
+
+            input {
+                border: none;
+                background: none;
+                outline: none;
+                width: 32rem;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                height: 0rem;
+                overflow: hidden;
+
+                li {
+                    color: #2D2B27;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    line-height: 160%;
+                }
+            }
         }
     }
 
@@ -151,7 +226,7 @@
         @include breakpoint($xl-bp) {
             display: none;
         }
-        
+
     }
 
     .header__burger-button {
@@ -188,11 +263,11 @@
                 transform: translateY(0.8rem) rotate(45deg);
             }
         }
-    
+
         div:nth-child(2) {
             opacity: 0;
         }
-    
+
         div:nth-child(3) {
             transform: translateY(-1.3rem) rotate(-45deg);
 
@@ -305,6 +380,7 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
 
+
     @include breakpoint($sm-bp) {
         padding-bottom: 5rem;
     }
@@ -356,17 +432,33 @@
 
 .header__burger-modal-search {
     display: flex;
-    align-items: center;
     gap: 1rem;
     justify-content: center;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #E1E1E1;
+    box-shadow: 0px 0.4rem 1.4rem 0px rgba(35, 30, 1, 0.10);
+    padding: 2rem;
+    width: 40%;
+    justify-content: space-between;
+
+    @include breakpoint($lb-bp) {
+        width: 66%;
+    }
+
+    @include breakpoint($sm-bp) {
+        width: 100%;
+    }
 
     button {
         background: none;
         border: none;
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
 
-        
+        @include breakpoint($sm-bp) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
 
         svg {
             width: 100%;
@@ -380,12 +472,33 @@
         outline: none;
         border: none;
         color: var(--black);
-        border-bottom: 0.1rem solid var(--black);
         font-size: 1.6rem;
         font-weight: 500;
-        padding-left: 0.5rem;
-        padding-bottom: 0.5rem;
         width: 100%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.2rem;
+        }
+    
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 0;
+        overflow: hidden;
+
+        li {
+            color: var(--black);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 160%;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.2rem;
+            }
+        }
     }
 }
 

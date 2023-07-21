@@ -3,18 +3,24 @@
 
     @include breakpoint($xl-bp) {
         flex-direction: column;
-        gap: 3rem;
     }
 }
 
 .main-title__content {
     display: flex;
     flex-direction: column;
-    gap: 8rem;
+    // gap: 8rem;
     width: 100%;
 }
 
 .main-title__text-top-container {
+    padding-bottom: 8rem;
+    border-right: 0.1rem solid var(--orange);
+
+    @include breakpoint($xl-bp) {
+        border-right: none;
+    }
+
     h1 {
         font-size: 4rem;
         font-weight: 700;
@@ -66,9 +72,16 @@
 
 .main-title__text-down-container {
     padding: 3rem;
+    position: relative;
+    border: 0.1rem solid var(--orange);
+    border-right: none;
+    border-radius: 0.5rem 0 0 0.5rem;
 
     @include breakpoint($xl-bp) {
         padding: 2rem;
+        border-right: 0.1rem solid var(--orange);
+        border-bottom: none;
+        border-radius: 0.5rem 0.5rem 0 0;
     }
 
     p:first-child {
@@ -153,11 +166,25 @@
 
 .main-title__img {
     width: 78.7222%;
+    padding: 3rem;
+
+    border: 0.1rem solid var(--orange);
+    border-left: none;
+    border-radius: 0 0.5rem 0.5rem 0;
 
     @include breakpoint($xl-bp) {
         padding-left: 2rem;
         padding-right: 2rem;
         width: 100%;
+
+        border-left: 0.1rem solid var(--orange);
+        border-top: none;
+        padding: 2rem;
+        border-radius: 0 0rem 0.5rem 0.5rem;
+    }
+    
+    @include breakpoint($sm-bp) {
+        padding-top: 0rem;
     }
 
     img {
@@ -308,51 +335,48 @@
             padding-left: 0rem;
             padding-right: 0rem;
         }
+    }
+}
 
-        .main-about-company__letter {
-            width: 38%;
+.main-about-company__letter {
+    width: 38%;
 
-            @include breakpoint($sm-bp) {
-                width: 100%;
-            }
+    @include breakpoint($sm-bp) {
+        width: 100%;
+    }
+
+    p:first-child {
+        color: var(--orange);
+        font-size: 10rem;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        opacity: 0;
+        transition: all 0.2s linear;
+
+        @include breakpoint($lb-bp) {
+            font-size: 7rem;
         }
 
-        p:first-child {
-            color: var(--orange);
-            font-size: 10rem;
-            font-weight: 700;
-            line-height: normal;
-            text-transform: uppercase;
-            opacity: 0;
-            transition: all 0.2s linear;
-
-            @include breakpoint($lb-bp) {
-                font-size: 7rem;
-            }
-
-            @include breakpoint($sm-bp) {
-                font-size: 7rem;
-            }
+        @include breakpoint($sm-bp) {
+            font-size: 7rem;
         }
+    }
 
-        p:first-child.opacity {
-            opacity: 1;
-            transition: all 0.2s linear;
+    p:first-child.opacity {
+        opacity: 1;
+        transition: all 0.2s linear;
+    }
+
+    span {
+        color: var(--black);
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 160%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.4rem;
         }
-
-        span {
-            color: var(--black);
-            font-size: 1.6rem;
-            font-weight: 500;
-            line-height: 160%;
-
-            @include breakpoint($sm-bp) {
-                font-size: 1.4rem;
-            }
-        }
-
-
-
     }
 }
 
@@ -462,7 +486,7 @@
         margin-top: 10rem;
     }
 
-    button {
+    .orange-btn {
         display: none;
 
         @include breakpoint($xl-bp) {
@@ -471,7 +495,7 @@
         }
 
         @include breakpoint($sm-bp) {
-            width: 100%;
+            width: 96%;
         }
     }
 }
@@ -532,7 +556,7 @@
         display: flex;
 
         @include breakpoint($xl-bp) {
-            display: none;
+            display: none !important;
         }
     }
 }
@@ -541,6 +565,7 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    text-decoration: none;
 
     @include breakpoint($lb-bp) {
         gap: 1rem;

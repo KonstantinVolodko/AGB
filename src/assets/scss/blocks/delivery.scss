@@ -1,0 +1,114 @@
+.delivery {
+
+
+    h2 {
+        margin-top: 5rem;
+        color: var(--black);
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 113.9%;
+        text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+    }
+}
+
+.delivery-content {
+    margin-top: 3rem;
+    display: flex;
+    gap: 3rem;
+
+    @include breakpoint($lb-bp) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.delivery-content__item {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    width: 23.66%;
+
+    @include breakpoint($xl-bp) {
+        width: 48.4%;
+        gap: 2rem;
+    }
+
+    @include breakpoint($lb-bp) {
+        width: 100%;
+    }
+
+    @include breakpoint($sm-bp) {
+        gap: 1rem;
+    }
+}
+
+.delivery-content__number {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--orange);
+    font-size: 10rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include breakpoint($sm-bp) {
+        font-size: 7rem;
+    }
+
+    p:last-child {
+        background: var(--orange);
+        height: 0.1rem;
+        width: 100%;
+
+        @include breakpoint($lb-bp) {
+            display: none;
+        }
+    }
+}
+
+.delivery-content__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include breakpoint($sm-bp) {
+        gap: 1rem;
+    }
+
+    p:first-child {
+        color: var(--orange);
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 113.9%;
+        text-transform: uppercase;
+
+        @include breakpoint($sm-bp) {
+            font-size: 2.5rem;
+        }
+    }
+
+    p:last-child {
+        color: var(--black);
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 160%;
+
+        @include breakpoint($sm-bp) {
+            font-size: 1.4rem;
+        }
+
+        span {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        b {
+            font-weight: 600;
+        }
+    }
+}

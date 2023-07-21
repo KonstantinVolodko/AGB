@@ -11,17 +11,9 @@ html {
     font-size: calc(100vw / 1600 * 10);
   }
 
-  // @include breakpoint($cos-bp) {
-  //   font-size: calc(100vw / 1330 * 10);
-  // }
-
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 1024 * 10);
   }
-
-  // @include breakpoint($jb-bp) {
-  //   font-size: calc(100vw / 850 * 10);
-  // }
 
   @include breakpoint($lb-bp) {
     font-size: calc(100vw / 650 * 10);
@@ -52,7 +44,17 @@ img {
   image-rendering: -webkit-optimize-contrast;
 }
 
+h1 {
+  color: var(--black);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 140%;
+  text-transform: uppercase;
 
+  @include breakpoint($sm-bp) {
+      font-size: 2.8rem;
+  }
+}
 
 .page-padding {
   padding-left: 12rem;
@@ -149,3 +151,7 @@ svg {
 @import './blocks/footer.scss';
 @import './blocks/main.scss';
 @import './blocks/catalog.scss';
+@import './blocks/contacts.scss';
+@import './blocks/delivery.scss';
+@import './blocks/aboutCompany.scss';
+@import './blocks/productPage.scss';
