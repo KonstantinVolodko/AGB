@@ -85,6 +85,20 @@
             }
         }
 
+        a {
+            color: var(--black);
+            font-size: 1.6rem;
+            line-height: 160%;
+            font-weight: 700;
+            width: 100%;
+            min-height: 5.2rem;
+
+            @include breakpoint($lb-bp) {
+                min-height: unset;
+            }
+            
+        }
+
         p:nth-child(3) {
             padding-top: 1.5rem;
         }

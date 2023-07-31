@@ -165,12 +165,16 @@
 }
 
 .main-title__img {
-    width: 78.7222%;
+    width: 59.7222%;
     padding: 3rem;
 
     border: 0.1rem solid var(--orange);
     border-left: none;
     border-radius: 0 0.5rem 0.5rem 0;
+
+    @include breakpoint($ssh-bp) {
+        width: 78.7222%;
+    }
 
     @include breakpoint($xl-bp) {
         padding-left: 2rem;
